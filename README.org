@@ -1,0 +1,5 @@
+#+ TITLE: Neovim setup
+* Requirements:
+- Neovim >=9.05
+- Zathura
+- Texlive
