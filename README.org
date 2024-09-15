@@ -6,4 +6,5 @@
 - Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and imported from https://github.com/rafamadriz/friendly-snippets.git
 - Vimtex to compile TeX files.
 * Warning:
-I enabled the transparent background in one-dark theme because I prefer to use kitty's background. Deactivate the transparency if you don't like it.
+- I enabled the transparent background in one-dark theme because I prefer to use kitty's background. Deactivate the transparency if you don't like it.
+- I just tested it in Fedora Minimal after installing the requirements specified. If you use other distro this may not be enough.
