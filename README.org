@@ -2,3 +2,6 @@
 - Neovim $\geq$0.9.5
 - Zathura
 - Texlive
+* Includes:
+- Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and imported from https://github.com/rafamadriz/friendly-snippets.git
+- Vimtex to compile TeX files.
