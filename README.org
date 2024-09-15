@@ -5,3 +5,5 @@
 * Includes:
 - Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and imported from https://github.com/rafamadriz/friendly-snippets.git
 - Vimtex to compile TeX files.
+* Warning:
+I enable the transparent background in one-dark theme because I prefer to use kitty background. Deactivate the transparency if you don't like it.
