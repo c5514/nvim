@@ -51,11 +51,11 @@ require("lazy").setup({
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		{ "rafamadriz/friendly-snippets" },
 		config = function()
 			require "config/luasnip"
 		end,
 	},
-	{ "rafamadriz/friendly-snippets" },
 	{
 		"williamboman/mason.nvim",
 		opts = {
