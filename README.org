@@ -1,5 +1,5 @@
 * Requirements:
-- Neovim $\geq$0.9.5
+- Neovim \ge 0.9.5
 - Zathura
 - Texlive
 * Installation:
