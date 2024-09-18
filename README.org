@@ -2,9 +2,13 @@
 - Neovim $\geq$0.9.5
 - Zathura
 - Texlive
+* Installation:
+- Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users.
+- For zathura configuration file do the same.
 * Includes:
-- Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and imported from https://github.com/rafamadriz/friendly-snippets.git
+- Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and some others imported from https://github.com/rafamadriz/friendly-snippets.git
 - Vimtex to compile TeX files.
+- Zathura is set as the default pdf viewer. In zathura/ is included a configuration file for zathura dark theme.
 * Warning:
 - I enabled the transparent background in one-dark theme because I prefer to use kitty's background. Deactivate the transparency if you don't like it.
 - I just tested it in Fedora Minimal after installing the requirements specified. If you use other distro this may not be enough.
