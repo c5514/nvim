@@ -1,7 +1,7 @@
 * Requirements:
 - Neovim \ge 0.9.5
 - Zathura
-- Texlive
+- Texlive including latexmk
 * Installation:
 - Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users.
 - For zathura configuration file do the same.
