@@ -13,13 +13,13 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("neo-tree").setup ({
-				filesystem = {
-					filtered_items = {
-						visible = true,
-					},
+		require("neo-tree").setup ({
+			filesystem = {
+				filtered_items = {
+					visible = true,
 				},
-			})
+			},
+		})
 		end,
 	},
 	{
@@ -32,9 +32,9 @@ require("lazy").setup({
 		end,
 	},
 	{
-    	'windwp/nvim-autopairs',
-    	event = "InsertEnter",
-    	config = true
+    		'windwp/nvim-autopairs',
+    		event = "InsertEnter",
+    		config = true
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -43,15 +43,15 @@ require("lazy").setup({
 		end,
 	},
 	{
-    	"hrsh7th/nvim-cmp",
-    	dependencies = { "hrsh7th/cmp-buffer","saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp" },
+    		"hrsh7th/nvim-cmp",
+    		dependencies = { "hrsh7th/cmp-buffer","saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-path", "hrsh7th/cmp-nvim-lsp" },
 		config = function()
 			require "config/cmp"
 		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		{ "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require "config/luasnip"
 		end,
@@ -67,8 +67,8 @@ require("lazy").setup({
       		},
     	},
 	},
-    {
-    	"neovim/nvim-lspconfig",
+	{
+    		"neovim/nvim-lspconfig",
 		config = function()
 			require "config/lsp"
 		end,
@@ -87,8 +87,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-    	"lukas-reineke/indent-blankline.nvim",
-    	main = "ibl",
+    		"lukas-reineke/indent-blankline.nvim",
+    		main = "ibl",
 		config = function ()
 			require("ibl").setup()
 		end,
