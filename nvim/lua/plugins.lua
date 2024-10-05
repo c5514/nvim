@@ -68,6 +68,17 @@ require("lazy").setup({
     	},
 	},
 	{
+		"williamboman/mason-lspconfig.nvim",
+		opts = {
+			ensure_installed = {
+				"lua_ls",
+				"texlab",
+				"pyright",
+				"fortls",
+			},
+		},
+	},
+	{
     		"neovim/nvim-lspconfig",
 		config = function()
 			require "config/lsp"
@@ -124,5 +135,27 @@ require("lazy").setup({
 			require "config/treesitterContext"
 		end,
 	},
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function ()
+			require "config/noice"
+		end
+	},
+	{
+		"rcarriga/nvim-notify",
+		config = function ()
+			require("notify").setup({
+			background_colour = "#000000",
+			})
+		end
+	}
 })
 

@@ -1,10 +1,7 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 local options = { noremap = true, silent = true }
 local map = vim.keymap.set
-map("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
+map("n", ";", ":")
+map("n", "<leader>n", "<Cmd>Neotree toggle<CR>")
 map("n", "<leader>ft", "<Cmd>TodoTelescope<CR>", { desc = "Find TODOs" })
 map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>", { desc = "Find files" })
 map("n", "<leader>fr", "<Cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
@@ -12,10 +9,12 @@ map("n", "<leader>fs", "<Cmd>Telescope live_grep<CR>", { desc = "Find string in 
 map("n", "<leader>fc", "<Cmd>Telescope grep_string<CR>", { desc = "Find string under cursor" })
 map("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Move to next buffer" })
 map("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Move to previous buffer" })
+map("n", "<leader>bd", "<Cmd>bdelete<CR>", { desc = "Delete buffer" })
+map("n", "<leader>br", "<Cmd>BufferLineCloseRight<CR>", { desc = "Delete buffers to the right" })
+map("n", "<leader>bb", "<Cmd>e #<CR>", { desc = "Switch to other buffer" })
 
 map("i", "jk", "<Esc>", options)
-map("i", "kj", "<Esc>", options)
-vim.cmd([[hi Conceal guifg=#d3d3d3]])
+
 -- Vimtex comands reassigned
 -- Change of math mode ds$ --> dsm, cs$ --> csm, ts$ --> tsm
 map("n", "dsm", "<Plug>(vimtex-env-delete-math)", { noremap = false, silent = true })

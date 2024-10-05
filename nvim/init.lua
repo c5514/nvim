@@ -16,4 +16,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+--Change colour of conceal
+-- vim.cmd('highlight Conceal guifg=#d3d3d3')
+vim.cmd([[
+augroup ConcealHighlight
+  autocmd!
+  autocmd FileType tex highlight Conceal guifg=#d3d3d3 guibg=none
+augroup END
+]])
 require("plugins")
