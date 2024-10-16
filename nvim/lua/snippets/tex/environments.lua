@@ -13,6 +13,13 @@ local d = ls.dynamic_node
 local r = ls.restore_node
 local util = require("luasnip.util.util")
 local node_util = require("luasnip.nodes.util")
+local tex = {}
+tex.in_mathzone = function()
+	return vim.fn['vimtex#syntax#in_mathzone']() == 1
+end
+tex.in_text = function()
+	return not vim.fn['vimtex#syntax#in_mathzone']() == 1
+end
 local rec_ls
 rec_ls = function()
 	return sn(nil, {
@@ -204,19 +211,19 @@ ls.add_snippets('tex', {
 		}
 	}) })),
 	s({ trig = "sec", dscr = "Display '\\section{}'" },
-		fmta([[\section{<>}]], i(1))),
+		fmta([[\section{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "ssec", dscr = "Display '\\subsection{}'" },
-		fmta([[\subsection{<>}]], i(1))),
+		fmta([[\subsection{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "sssec", dscr = "Display '\\subsubsection{}'" },
-		fmta([[\subsubsection{<>}]], i(1))),
+		fmta([[\subsubsection{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "sec*", dscr = "Display '\\section**{}'" },
-		fmta([[\section*{<>}]], i(1))),
+		fmta([[\section*{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "ssec*", dscr = "Display '\\subsection**{}'" },
-		fmta([[\subsection*{<>}]], i(1))),
+		fmta([[\subsection*{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "sssec*", dscr = "Display '\\subsubsection**{}'" },
-		fmta([[\subsubsection*{<>}]], i(1))),
+		fmta([[\subsubsection*{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "part", dscr = "Display '\\part{}'" },
-		fmta([[\part{<>}]], i(1))),
+		fmta([[\part{<>}]], i(1)), { condition = tex.in_text }),
 	s({ trig = "chap", dscr = "Display '\\chapter{}'" },
-		fmta([[\chapter{<>}]], i(1))),
+		fmta([[\chapter{<>}]], i(1)), { condition = tex.in_text }),
 })

@@ -24,7 +24,7 @@ ls.add_snippets('tex', {
         \end{align}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "ali*", dscr = "Non-indexed align environment" },
 		fmta([[
@@ -33,7 +33,7 @@ ls.add_snippets('tex', {
         \end{align*}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "fal", dscr = "Indexed flalign environment" },
 		fmta([[
@@ -42,7 +42,7 @@ ls.add_snippets('tex', {
         \end{flalign}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "fal*", dscr = "Non-indexed flalign environment" },
 		fmta([[
@@ -51,7 +51,7 @@ ls.add_snippets('tex', {
         \end{flalign*}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 
 	s({ trig = "eq", dscr = "Indexed equation environment" },
@@ -61,7 +61,7 @@ ls.add_snippets('tex', {
         \end{equation}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "eq*", dscr = "Non-indexed equation environment" },
 		fmta([[
@@ -70,7 +70,7 @@ ls.add_snippets('tex', {
         \end{equation*}
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "pmat", dscr = "Matrix (...)" },
 		fmta([[
@@ -79,7 +79,7 @@ ls.add_snippets('tex', {
         \end{pmatrix}
       ]],
 			{ i(1) }
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "bmat", dscr = "Matrix [...]" },
 		fmta([[
@@ -88,7 +88,7 @@ ls.add_snippets('tex', {
         \end{bmatrix}
       ]],
 			{ i(1) }
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "Bmat", dscr = "Matrix {...}" },
 		fmta([[
@@ -97,7 +97,7 @@ ls.add_snippets('tex', {
         \end{Bmatrix}
       ]],
 			{ i(1) }
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "det", dscr = "Determinant matrix" },
 		fmta([[
@@ -106,7 +106,7 @@ ls.add_snippets('tex', {
         \end{vmatrix}
       ]],
 			{ i(1) }
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "dm", dscr = "Display math" },
 		fmta(
@@ -114,7 +114,7 @@ ls.add_snippets('tex', {
         \[ <> \]
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 	s({ trig = "im", dscr = "Inline math" },
 		fmta(
@@ -122,7 +122,7 @@ ls.add_snippets('tex', {
         $<>$
       ]],
 			{ i(1) }
-		), {condition = tex.in_text}
+		), { condition = tex.in_text }
 	),
 
 	s({ trig = "lim", dscr = "Limit" },
@@ -133,7 +133,7 @@ ls.add_snippets('tex', {
 			{
 				i(1, 'n'), i(2, '\\infty')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "limsup", dscr = "Limit sup" },
 		fmta(
@@ -143,7 +143,7 @@ ls.add_snippets('tex', {
 			{
 				i(1, 'n'), i(2, '\\infty')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "sum", dscr = "Sum" },
 		fmta(
@@ -153,7 +153,7 @@ ls.add_snippets('tex', {
 			{
 				i(1, 'n=0'), i(2, '\\infty')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "prod", dscr = "Product" },
 		fmta(
@@ -163,7 +163,7 @@ ls.add_snippets('tex', {
 			{
 				i(1, 'n=0'), i(2, '\\infty')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "dint", dscr = "Definite integral", snippetType = "autosnippet" },
 		fmta(
@@ -173,9 +173,9 @@ ls.add_snippets('tex', {
 			{
 				i(1, '0'), i(2, '\\infty'), i(3, 'content'), i(4, 'x')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
-	s({ trig = "txt", dscr = "Text environment", snippetType = "autosnippet" },
+	s({ trig = "tex", dscr = "Text environment", snippetType = "autosnippet" },
 		fmta(
 			[[
         \text{<>}
@@ -183,7 +183,7 @@ ls.add_snippets('tex', {
 			{
 				i(1)
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "dx", dscr = "Firt order Derivative", snippetType = "autosnippet" },
 		fmta(
@@ -193,7 +193,7 @@ ls.add_snippets('tex', {
 			{
 				i(1), i(2, 'x')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "ddx", dscr = "Second order Derivative", snippetType = "autosnippet" },
 		fmta(
@@ -203,7 +203,7 @@ ls.add_snippets('tex', {
 			{
 				i(1), i(2, 'x')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "dnx", dscr = "n-order Derivative", snippetType = "autosnippet" },
 		fmta(
@@ -213,7 +213,7 @@ ls.add_snippets('tex', {
 			{
 				i(1, 'n'), i(2), i(3, 'x'), rep(1, 'n')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "pdx", dscr = "Partial Derivative", snippetType = "autosnippet" },
 		fmta(
@@ -223,7 +223,7 @@ ls.add_snippets('tex', {
 			{
 				i(1), i(2, 'x')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "ppdx", dscr = "Second order partial Derivative", snippetType = "autosnippet" },
 		fmta(
@@ -233,7 +233,7 @@ ls.add_snippets('tex', {
 			{
 				i(1), i(2, 'x'), i(3, 'y')
 			}
-		), {condition = tex.in_mathzone}
+		), { condition = tex.in_mathzone }
 	),
 	s({ trig = "bigfun", dscr = "Function with conditions" },
 		fmta([[
@@ -248,5 +248,12 @@ ls.add_snippets('tex', {
 	s({ trig = "ff", dscr = "Display '\\frac{}{}}'" },
 		fmta([[\frac{<>}{<>}]],
 			{ i(1), i(2) }
+		)),
+	s({ trig = "case", dscr = "Begin cases env" },
+		fmta([[
+		\begin{cases}
+		<>
+		\end{cases}]],
+			{ i(1) }
 		)),
 })
