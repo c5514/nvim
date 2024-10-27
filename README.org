@@ -12,6 +12,7 @@
 - Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) and some others imported from https://github.com/rafamadriz/friendly-snippets.git
 - Vimtex to compile TeX files.
 - Zathura is set as the default pdf viewer. In zathura/ is included a configuration file for zathura dark theme.
+- Neovim plugin named illustrate.nvim to draw pictures for LaTex
 * Warning:
 - I enabled the transparent background in one-dark theme because I prefer to use kitty's background. Deactivate the transparency if you don't like it.
 - I just tested it in Fedora Minimal after installing the requirements specified. If you use other distro this may not be enough.
