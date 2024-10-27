@@ -74,7 +74,7 @@ require("lazy").setup({
 				"lua_ls",
 				"texlab",
 				"pyright",
-				"fortls",
+				-- "fortls",
 			},
 		},
 	},
@@ -88,6 +88,12 @@ require("lazy").setup({
 		"lervag/vimtex",
 		config = function()
 			require "plugins/vimtex"
+		end,
+	},
+	{
+		"rpapallas/illustrate.nvim",
+		config = function ()
+			require "plugins/illustrate"
 		end,
 	},
 	{
