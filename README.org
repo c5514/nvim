@@ -2,6 +2,9 @@
 - Neovim \ge 0.9.5
 - Zathura
 - Texlive including latexmk
+- Inkscape to use illustrate plugin(textext extension is recommended)
+- npm 
+- A nerd font
 * Installation:
 - Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users.
 - For zathura configuration file do the same.
