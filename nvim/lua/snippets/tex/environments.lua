@@ -20,6 +20,30 @@ end
 tex.in_text = function()
 	return not vim.fn['vimtex#syntax#in_mathzone']() == 1
 end
+
+local line_begin = require("luasnip.extras.expand_conditions").line_begin
+-- personal util
+local function isempty(s) --util
+	return s == nil or s == ''
+end
+
+-- label util
+local generate_label = function(args, parent, _, user_arg1, user_arg2)
+	if user_arg2 ~= "xargs" then
+		delims = { "\\label{", "}" } -- chooses surrounding environment based on arg2 - tcolorboxes use xargs
+	else
+		delims = { "[", "]" }
+	end
+	if isempty(user_arg1) then -- creates a general label
+		return sn(nil, fmta([[
+        \label{<>}
+        ]], { i(1) }))
+	else -- creates a specialized label
+		return sn(nil, fmta([[
+        <><>:<><>
+        ]], { t(delims[1]), t(user_arg1), i(1), t(delims[2]) }))
+	end
+end
 local rec_ls
 rec_ls = function()
 	return sn(nil, {
@@ -142,27 +166,27 @@ ls.add_snippets('tex', {
 		fmta(
 			[[
         \begin{<>}
-           <>
+        	<>
         \end{<>}
       ]],
 			{
-				i(1),
+				i(1, 'environment'),
 				i(2),
 				rep(1),
 			}
-		)
+		), { condition = line_begin }
 	),
 	s({ trig = "item", dscr = "Itemize environment" }, {
 		t({ "\\begin{itemize}",
 			"\t\\item " }), i(1), d(2, rec_ls, {}),
 		t({ "", "\\end{itemize}" }), i(0)
-	}),
+	}, { condition = line_begin }),
 	-- s({ trig = "itm", dscr = "Add item" }, t("\\item ")),
 	s({ trig = "enum", dscr = "Enumerate environment" }, {
 		t({ "\\begin{enumerate}",
 			"\t\\item " }), i(1), d(2, rec_ls, {}),
 		t({ "", "\\end{enumerate}" }), i(0)
-	}),
+	}, { condition = line_begin }),
 	s({ trig = "cent", dscr = "Center environment" },
 		fmta(
 			[[
@@ -170,19 +194,20 @@ ls.add_snippets('tex', {
            <>
         \end{center}
       ]],
-			{
-				i(1)
-			}
-		)),
+			{ i(1) }
+		), { condition = line_begin }),
 	s({ trig = "fig", dscr = "Figure environment" },
 		fmta(
 			[[
-        \begin{figure}[<>]
-          \centering
-          \includegraphics[width=<> \linewidth]{<>}
-          \caption{<>}
-          \label{fig:<>}
-        \end{figure}
+% ──────────────────────────────────────────────────────────────────────
+\begin{figure}[<>]
+	\centering
+	\includegraphics[width=<> \linewidth]{<>}
+	\caption{<>}
+	\label{fig:<>}
+\end{figure}
+% ──────────────────────────────────────────────────────────────────────
+
       ]],
 			{
 				i(1, '!htpb'),
@@ -191,7 +216,7 @@ ls.add_snippets('tex', {
 				i(4, 'caption'),
 				i(5, 'label')
 			}
-		)),
+		), { condition = line_begin }),
 	-- s("tab", {
 	-- 	t "\\begin{tabular}{",
 	-- 	i(1, "0"),
@@ -209,21 +234,31 @@ ls.add_snippets('tex', {
 			function(snip) snip.rows = snip.rows + 1 end,
 			function(snip) snip.rows = math.max(snip.rows - 1, 1) end
 		}
-	}) })),
+	}) }), { condition = line_begin }),
 	s({ trig = "sec", dscr = "Display '\\section{}'" },
-		fmta([[\section{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\section{<>}<>
+		<>]], { i(1), c(2, { t(""), d(1, generate_label, {}, { user_args = { "sec" } }) }), i(0) }), { condition = line_begin }),
 	s({ trig = "ssec", dscr = "Display '\\subsection{}'" },
-		fmta([[\subsection{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\subsection{<>}<>
+		<>]], { i(1), c(2, { t(""), d(1, generate_label, {}, { user_args = { "ssec" } }) }), i(0) }),
+		{ condition = line_begin }),
 	s({ trig = "sssec", dscr = "Display '\\subsubsection{}'" },
-		fmta([[\subsubsection{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\subsubsection{<>}<>
+		<>]], { i(1), c(2, { t(""), d(1, generate_label, {}, { user_args = { "sssec" } }) }), i(0) }),
+		{ condition = line_begin }),
 	s({ trig = "sec*", dscr = "Display '\\section**{}'" },
-		fmta([[\section*{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\section*{<>}]], i(1)), { condition = line_begin }),
 	s({ trig = "ssec*", dscr = "Display '\\subsection**{}'" },
-		fmta([[\subsection*{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\subsection*{<>}]], i(1)), { condition = line_begin }),
 	s({ trig = "sssec*", dscr = "Display '\\subsubsection**{}'" },
-		fmta([[\subsubsection*{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\subsubsection*{<>}]], i(1)), { condition = line_begin }),
+
 	s({ trig = "part", dscr = "Display '\\part{}'" },
-		fmta([[\part{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\part{<>}<>
+		<>]], { i(1), c(2, { t(""), d(1, generate_label, {}, { user_args = { "part" } }) }), i(0) }),
+		{ condition = line_begin }),
 	s({ trig = "chap", dscr = "Display '\\chapter{}'" },
-		fmta([[\chapter{<>}]], i(1)), { condition = tex.in_text }),
+		fmta([[\chapter{<>}<>
+		<>]], { i(1), c(2, { t(""), d(1, generate_label, {}, { user_args = { "part" } }) }), i(0) }),
+		{ condition = line_begin }),
 })

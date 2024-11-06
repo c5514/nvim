@@ -25,6 +25,7 @@ ls.add_snippets('tex', {
         \usepackage{physics}
         \usepackage{dsfont}
         \usepackage{tikz}
+        \usepackage{svg}
         %\usetikzlibrary{quantikz2}%for quantum circuits
         \usepackage{circuitikz}%for logic gates
         \usepackage{caption}
@@ -56,9 +57,6 @@ ls.add_snippets('tex', {
         }
         \settitlemarks{section,subsection}
         \pagestyle{mypage}
-        \input{~/Documents/Vim/Tex/Newcomm/theorem.tex}
-
-
 
         \title{<>}
         \author{<>}

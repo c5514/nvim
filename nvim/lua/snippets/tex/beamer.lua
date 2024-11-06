@@ -16,13 +16,26 @@ tex.in_beamer = function()
 end
 
 ls.add_snippets('tex', {
-	s({ trig = "bfr", dscr = "Beamer frame" },
+	s({ trig = "tbfr", dscr = "Title Beamer frame", snippetType = "autosnippet" },
 		fmta([[
-        \begin{frame}\frametitle{<>}
-           <>
-        \end{frame}
+% ──────────────────────────────── <> ──────────────────────────────
+\begin{frame}\frametitle{<>}
+	<>
+\end{frame}
+
       ]],
-			{ i(1, 'Frame title'), i(2) }
-		), { condition = tex.in_text }
+			{ i(1, 'Frame title'), rep(1), i(2) }
+		), { condition = tex.in_beamer }
+	),
+	s({ trig = "bfr", dscr = "Beamer frame", snippetType = "autosnippet" },
+		fmta([[
+% ──────────────────────────────────────────────────────────────────────
+\begin{frame}
+	<>
+\end{frame}
+
+      ]],
+			{ i(1) }
+		), { condition = tex.in_beamer }
 	),
 })
