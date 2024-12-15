@@ -155,20 +155,20 @@ require("lazy").setup({
 		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+			-- "rcarriga/nvim-notify",
 		},
 		config = function()
 			require "plugins/noice"
 		end
 	},
-	{
-		"rcarriga/nvim-notify",
-		config = function()
-			require("notify").setup({
-				background_colour = "#000000",
-			})
-		end
-	},
+	-- {
+	-- 	"rcarriga/nvim-notify",
+	-- 	config = function()
+	-- 		require("notify").setup({
+	-- 			background_colour = "#000000",
+	-- 		})
+	-- 	end
+	-- },
 	{
 		"echasnovski/mini.nvim",
 		version = '*',
