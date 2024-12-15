@@ -13,28 +13,29 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-		require("neo-tree").setup ({
-			filesystem = {
-				filtered_items = {
-					visible = true,
+			require("neo-tree").setup({
+				filesystem = {
+					filtered_items = {
+						visible = true,
+					},
 				},
-			},
-		})
+			})
 		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("lualine").setup({
-				icons_enabled = true,
-				theme = 'onedark',
-			})
+			require("plugins.lualine")
+			-- require("lualine").setup({
+			-- 	icons_enabled = true,
+			-- 	theme = 'onedark',
+			-- })
 		end,
 	},
 	{
-    	'windwp/nvim-autopairs',
-    	event = "InsertEnter",
-    	config = true
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
 	},
 	{
 		"nvim-telescope/telescope.nvim",
@@ -43,8 +44,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-    	"hrsh7th/nvim-cmp",
-    	dependencies = {
+		"hrsh7th/nvim-cmp",
+		dependencies = {
 			"hrsh7th/cmp-buffer",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-path",
@@ -65,12 +66,12 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
-        		"stylua",
-        		"shellcheck",
-        		"shfmt",
-        		"flake8",
-      		},
-    	},
+				"stylua",
+				"shellcheck",
+				"shfmt",
+				"flake8",
+			},
+		},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -84,7 +85,7 @@ require("lazy").setup({
 		},
 	},
 	{
-    	"neovim/nvim-lspconfig",
+		"neovim/nvim-lspconfig",
 		config = function()
 			require "plugins/lsp"
 		end,
@@ -97,52 +98,52 @@ require("lazy").setup({
 	},
 	{
 		"rpapallas/illustrate.nvim",
-		config = function ()
+		config = function()
 			require "plugins/illustrate"
 		end,
 	},
 	{
 		'akinsho/bufferline.nvim',
 		dependencies = 'nvim-tree/nvim-web-devicons',
-		config = function ()
-			require("bufferline").setup{}
+		config = function()
+			require("bufferline").setup {}
 		end,
 	},
 	{
-    	"lukas-reineke/indent-blankline.nvim",
-    	main = "ibl",
-		config = function ()
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		config = function()
 			require("ibl").setup()
 		end,
 	},
+	-- {
+	-- 	"folke/which-key.nvim",
+	-- 	event = "VeryLazy",
+	-- },
 	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-	},
-	{
-    	"goolord/alpha-nvim",
-    -- dependencies = { 'echasnovski/mini.icons' },
+		"goolord/alpha-nvim",
+		-- dependencies = { 'echasnovski/mini.icons' },
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		config = function()
-			require"plugins/alpha"
+			require "plugins/alpha"
 		end,
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function ()
+		config = function()
 			require "plugins/todoComments"
 		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		config = function ()
+		config = function()
 			require "plugins/treesitter"
 		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-context",
-		config = function ()
+		config = function()
 			require "plugins/treesitterContext"
 		end,
 	},
@@ -156,22 +157,22 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
 		},
-		config = function ()
+		config = function()
 			require "plugins/noice"
 		end
 	},
 	{
 		"rcarriga/nvim-notify",
-		config = function ()
+		config = function()
 			require("notify").setup({
-			background_colour = "#000000",
+				background_colour = "#000000",
 			})
 		end
 	},
 	{
 		"echasnovski/mini.nvim",
 		version = '*',
-		config = function ()
+		config = function()
 			require "plugins/mini"
 		end
 	},
@@ -181,6 +182,45 @@ require("lazy").setup({
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
 		}
+	},
+	{
+		"mrjones2014/smart-splits.nvim",
+		config = function()
+			require("plugins/splits")
+		end
+	},
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("plugins/conform")
+		end
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		keys = {
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+		}
+	},
+	{
+		"mikavilpas/yazi.nvim",
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>yy",
+				"<cmd>Yazi<cr>",
+				desc = "Open yazi at the current file",
+			},
+			{
+				"<leader>yw",
+				"<cmd>Yazi cwd<cr>",
+				desc = "Open the file manager in nvim's working directory",
+			},
+			{
+				'<leader>yr',
+				"<cmd>Yazi toggle<cr>",
+				desc = "Resume the last yazi session",
+			},
+		}
 	}
 })
-
