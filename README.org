@@ -4,6 +4,7 @@
 - Texlive including latexmk
 - Inkscape to use illustrate plugin(textext extension is recommended)
 - npm 
+- gcc
 - A nerd font
 * Installation:
 - Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users.
