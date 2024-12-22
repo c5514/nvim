@@ -8,10 +8,29 @@
 * Installation:
 - Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users.
 - For zathura configuration file do the same.
-* Includes:
-- Snippets for TeX files written using Luasnips(it is recommended to see read the snippets written in /nvim/lua/snippets/tex/) 
-- Vimtex to compile TeX files.
-- Zathura is set as the default pdf viewer. In zathura/ is included a configuration file for zathura dark theme.
-- Neovim plugin named illustrate.nvim to draw pictures for LaTex
-* Warning:
-- I enabled the transparent background in one-dark theme because I prefer to use kitty's background. Deactivate the transparency if you don't like it.
+* Plugins:
+- onedark.nvim
+- neo-tree
+- lualine.nvim
+- nvim-autopairs
+- telescope.nvim
+- nvim-cmp
+- LuaSnip
+- nvim-lspconfig
+- vimtex
+- illustrate.nvim
+- indent-blankline.nvim
+- alpha-nvim
+- todo-comments
+- nvim-treesitter
+- nvim-treesitter-context
+- rainbow-delimiters.nvim
+- noice.nvim
+- neovim-trunk
+- mini.nvim(surround, notify, commment, indentscope, cursorword, align, bracketed, clue, hipatterns, icons)
+- markview.nvim
+- smart-splits.nvim
+- conform.nvim
+- lazygit.nvim
+- git-blame.nvim
+- yazi.nvim
