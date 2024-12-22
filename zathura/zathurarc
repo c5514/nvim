@@ -1,49 +1,9 @@
-# Open document in fit-width mode by default
 set adjust-open "best-fit"
-# One page per row by default
 set pages-per-row 1
-
-
-#zoom settings
-set zoom-min 10
-set guioptions ""
-
-# zathurarc-dark
-set font "FontAwesome 15"
-set default-bg "rgba(0,0,0,0.4)" #00
-set default-fg "#F7F7F6" #01
-
-set statusbar-fg "#B0B0B0" #04
-set statusbar-bg "#202020" #01
-
-set inputbar-bg "#151515" #00 currently not used
-set inputbar-fg "#FFFFFF" #02
-
-set notification-error-bg "#AC4142" #08
-set notification-error-fg "#151515" #00
-
-set notification-warning-bg "#AC4142" #08
-set notification-warning-fg "#151515" #00
-
-
-set completion-highlight-fg "rgba(15,10,222,0.2)" #02
-set completion-highlight-bg "rgba(255,255,224,0)" #0C
-
-set completion-bg "#303030" #02
-set completion-fg "#E0E0E0" #0C
-
-set notification-bg "rgba(255,255,224,0)" #0B
-set notification-fg "transparent" #00
-
-set recolor "true"
-set recolor-lightcolor "rgba(0,0,0,0.8)" #00
-set recolor-darkcolor "#E0E0E0" #06
-set recolor-reverse-video "true"
-set recolor-keephue "true"
-
-set render-loading "false"
+set synctex true
 set scroll-step 50
+set zoom-min 10
+set default-bg "rgba(0,0,0,0.4)"
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
-                                    
