@@ -27,7 +27,7 @@
 - rainbow-delimiters.nvim
 - noice.nvim
 - neovim-trunk
-- mini.nvim(surround, notify, commment, indentscope, cursorword, align, bracketed, clue, hipatterns, icons)
+- mini.nvim(surround, notify, comment, indentscope, cursorword, align, bracketed, clue, hipatterns, icons)
 - markview.nvim
 - smart-splits.nvim
 - conform.nvim
