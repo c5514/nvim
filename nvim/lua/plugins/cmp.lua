@@ -1,9 +1,9 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
+-- local check_backspace = function()
+--   local col = vim.fn.col "." - 1
+--   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+-- end
 local kind_icons = {
   Namespace = "󰌗",
   Text = "󰉿",
@@ -71,13 +71,17 @@ cmp.setup {
       priority = 500
     },
     {
+      name = 'treesitter',
+      priority = 850,
+    },
+    {
       name = 'spell',
       option = {
         keep_all_entries = false,
         enable_in_context = function()
           return true
         end,
-        preselect_correct_word = true,
+        preselect_correct_word = false,
       },
       keywordLength = 4,
       priority = 100
@@ -114,11 +118,11 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_prev_item({ behavior = "insert" })
-      elseif luasnip.jumpable(-1) then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()
@@ -126,13 +130,9 @@ cmp.setup {
     end, { "i", "s" }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item({ behavior = "insert" })
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
+        cmp.select_next_item()
+      elseif luasnip.locally_jumpable(1) then
+        luasnip.jump(1)
       else
         fallback()
       end
