@@ -7,7 +7,7 @@
 - gcc
 - A nerd font
 * Installation:
-- Move nvim folder to ~/.config/ for Linux users or ~/AppData/Local/nvim for Windows users(Don't forget to change snippets directory in nvim/lua/plugins/luasnip.lua).
+- Move nvim folder to ~/.config/
 - For zathura configuration file do the same.
 * Plugins:
 - onedark.nvim
