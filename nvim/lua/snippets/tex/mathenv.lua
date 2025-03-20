@@ -109,6 +109,11 @@ ls.add_snippets('tex', {
       { i(1) }
     ), { condition = tex.in_mathzone }
   ),
+  s({ trig = "ts", wordTrig = false, dscr = "Tensor", snippetType = "autosnippet" },
+    fmta([[\tensor{<>}{<>}]],
+      { i(1), i(2) }
+    ), { condition = tex.in_mathzone }
+  ),
   s({ trig = "dm", wordTrig = false, dscr = "Display math" },
     fmta(
       [[
