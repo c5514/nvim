@@ -1,7 +1,7 @@
 vim.g.maplocalleader = " "
 vim.g.vimtex_quickfix_ignore_filters = {
-  'Underfull \\hbox',
-  'Overfull \\hbox',
+  'Underfull',
+  'Overfull',
   'LaTex Warning; .\\+float specifier changed to',
   'Package siunitx Warning: Detected the "physics" package',
 }
