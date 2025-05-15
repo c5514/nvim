@@ -229,8 +229,9 @@ ls.add_snippets("tex", {
   s(
     { trig = "to", wordTrig = false, snippetType = "autosnippet", priority = 10 },
     c(1, {
-      t("\\longmapsto"),
+      t("\\to"),
       t("\\mapsto"),
+      t("\\longmapsto"),
     }),
     { condition = tex.in_mathzone }
   ),
@@ -317,7 +318,7 @@ ls.add_snippets("tex", {
   s({ trig = "UU", wordTrig = false, snippetType = "autosnippet" }, t("\\bigcup"), { condition = tex.in_mathzone }),
   s({ trig = "<<", wordTrig = false, snippetType = "autosnippet" }, t("\\ll"), { condition = tex.in_mathzone }),
   s({ trig = ">>", wordTrig = false, snippetType = "autosnippet" }, t("\\gg"), { condition = tex.in_mathzone }),
-  s({ trig = "equiv", wordTrig = false, snippetType = "autosnippet" }, t("\\equiv"), { condition = tex.in_mathzone }),
+  s({ trig = "eqv", wordTrig = false, snippetType = "autosnippet" }, t("\\equiv"), { condition = tex.in_mathzone }),
   s(
     { trig = "sq", wordTrig = false, snippetType = "autosnippet" },
     fmta([[\sqrt{<>}]], { i(1) }),
@@ -343,11 +344,6 @@ ls.add_snippets("tex", {
   s(
     { trig = "conj", wordTrig = false, snippetType = "autosnippet" },
     fmta([[\overline{<>} ]], { i(1) }),
-    { condition = tex.in_mathzone }
-  ),
-  s(
-    { trig = "adj", wordTrig = false, snippetType = "autosnippet" },
-    fmta([[{<>}^\dagger ]], { i(1) }),
     { condition = tex.in_mathzone }
   ),
   s({ trig = "dag", wordTrig = false, snippetType = "autosnippet" }, t("^\\dagger"), { condition = tex.in_mathzone }),
@@ -491,12 +487,12 @@ ls.add_snippets("tex", {
     { condition = tex.in_mathzone }
   ),
   s(
-    { trig = "bra", wordTrig = false, dscr = "bra notation" },
+    { trig = "bra", wordTrig = false, snippetType = "autosnippet" },
     fmta([[\bra{<>}]], { i(1, " ") }),
     { condition = tex.in_mathzone }
   ),
   s(
-    { trig = "ket", wordTrig = false, dscr = "ket notation" },
+    { trig = "ket", wordTrig = false, snippetType = "autosnippet" },
     fmta([[\ket{<>}]], { i(1, " ") }),
     { condition = tex.in_mathzone }
   ),
