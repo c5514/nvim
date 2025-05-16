@@ -1,6 +1,7 @@
 local options = { noremap = true, silent = true }
 local map = vim.keymap.set
 map("n", ";", ":")
+map("n", "<leader>cc", "<Cmd>let @/ = ''<CR>")
 map("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
 map("n", "<leader>ft", "<Cmd>TodoTelescope<CR>", { desc = "Find TODOs" })
 map("n", "<leader>ff", "<Cmd>Telescope find_files<CR>", { desc = "Find files" })

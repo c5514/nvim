@@ -1,0 +1,254 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mynotes}[2025/04/15 Packages for notes]
+% Required packages
+\usepackage{babel}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{minitoc}
+\usepackage{silence}
+\WarningFilter{minitoc(hints)}{W0023}
+\WarningFilter{minitoc(hints)}{W0024}
+\WarningFilter{minitoc(hints)}{W0028}
+\WarningFilter{minitoc(hints)}{W0030}
+\WarningFilter{blindtext}{}
+% Math packages
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{derivative}
+\usepackage{tensor}
+\usepackage{physics}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+% Bibliography and citations
+\usepackage{natbib}
+\usepackage{cite}
+\bibliographystyle{unsrtnat}
+% References
+\usepackage[final]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	citecolor=blue,
+	filecolor=magenta,
+	urlcolor=blue
+}
+% Tikz pictures and theorem boxes
+\usepackage{tikz}
+\usepackage[most,many,breakable]{tcolorbox}
+% To precompile tikz graphs create folder named "graphs"
+\usetikzlibrary{external}
+\tikzsetexternalprefix{./graphs/}
+\tikzexternalize
+\tcbset{shield externalize}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{property}{Property}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{postulate}{Postulate}
+\newtheorem{corollary}{Corollary}
+\tcbuselibrary{theorems}
+\newtcbtheorem[use counter=theorem,number within=section]{Theorem}{Theorem}
+{%
+	enhanced,
+	breakable,
+	colback = blue!15,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{blue!80!black},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = blue!80!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, blue!80!black},
+}
+{thm}
+\newtcbtheorem[no counter]{Proof}{Proof}{
+	enhanced,
+	breakable,
+	sharp corners,
+	attach boxed title to top left={
+			yshifttext=-1mm
+		},
+	colback=white,
+	colframe=blue!25,
+	fonttitle=\bfseries\sffamily,
+	coltitle=blue!80!black,
+	boxed title style={
+			sharp corners,
+			size=small,
+			colback=blue!25,
+			colframe=blue!25,
+		}
+}{prf}
+\newtcbtheorem[use counter=postulate]{Postulate}{Postulate}{
+	enhanced,
+	sharp corners,
+	attach boxed title to top left={
+			yshifttext=-1mm
+		},
+	colback=white,
+	colframe=purple!75!white,
+	fonttitle=\bfseries,
+	boxed title style={
+			sharp corners,
+			size=small,
+			colback=purple!75!black,
+			colframe=purple!75!black,
+		}
+}{pst}
+\newtcbtheorem[use counter=definition, number within=section]{Definition}{Definition}
+{%
+	enhanced,
+	% breakable,
+	colback = purple!20,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{purple!80!black},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = purple!80!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, purple!80!black},
+}
+{def}
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+\newtcolorbox{Note}[1][]{
+	enhanced jigsaw,
+	colback=gray!20!white,
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Note:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow={black!50!white, opacity=0.7}, % Adjust opacity
+	attach boxed title to top left={xshift=1cm, yshift=-\tcboxedtitleheight/2, yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+\newtcbtheorem[number within=section]{Exercise}{Exercise}
+{%
+	enhanced,
+	breakable,
+	colback = teal!20,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{teal!80!black},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = teal!80!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, teal!80!black},
+}
+{th}
+\newtcolorbox{Summary}[1][]{
+	enhanced jigsaw,
+	colback=gray!20!white,
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Summary:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow={black!50!white, opacity=0.7}, % Adjust opacity
+	attach boxed title to top left={xshift=1cm, yshift=-\tcboxedtitleheight/2, yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=2.5cm,
+	boxed title style={
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\mi}{{i\mkern1mu}}%imaginary number
+\newcommand{\up}{\ket{\uparrow}}
+\newcommand{\down}{\ket{\downarrow}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\dg}{^\circ}
+\newcommand{\surjto}{\twoheadrightarrow}
+\newcommand{\injto}{\hookrightarrow}
+\DeclareMathOperator\supp{supp}
+\DeclareMathOperator{\img}{im} % Image
+\DeclareMathOperator{\Img}{Im} % Image
+\DeclareMathOperator{\coker}{coker} % Cokernel
+\DeclareMathOperator{\Coker}{Coker} % Cokernel
+\DeclareMathOperator{\Ker}{Ker} % Kernel
+\DeclareMathOperator{\Spec}{Spec} % spectrum
+\DeclareMathOperator{\pr}{pr} % projection
+\DeclareMathOperator{\ext}{ext} % extension
+\DeclareMathOperator{\pred}{pred} % predecessor
+\DeclareMathOperator{\dom}{dom} % domain
+\DeclareMathOperator{\cod}{cod} % codomain
+\DeclareMathOperator{\ran}{ran} % range
+\DeclareMathOperator{\Hom}{Hom} % homomorphism
+\DeclareMathOperator{\Mor}{Mor} % morphisms
+\DeclareMathOperator{\End}{End} % endomorphism
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\ray}[1]{\overrightarrow{#1}}
+\newcommand{\seg}[1]{\overline{#1}}
+\newcommand{\arc}[1]{\wideparen{#1}}
+\newcommand{\cat}[1]{\mathbf{#1}}
+\newcommand{\Ob}[1]{\operatorname{Ob}(\cat{#1})}
+\newcommand{\Obj}[1]{\cat{#1}_0}
+\newcommand{\cHom}[3]{\Hom_{\mathbf{#1}}(#2,#3)}
+\newcommand{\mean}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\renewcommand{\norm}[1]{\left\lVert{#1}\right\rVert}
+\endinput

@@ -303,6 +303,8 @@ ls.add_snippets("tex", {
     }),
     { condition = tex.in_mathzone }
   ),
+  s({ trig = "surj", wordTrig = false, snippetType = "autosnippet" }, t("\\surjto"), { condition = tex.in_mathzone }),
+  s({ trig = "inj", wordTrig = false, snippetType = "autosnippet" }, t("\\injto"), { condition = tex.in_mathzone }),
   s({ trig = "neq", wordTrig = false, snippetType = "autosnippet" }, t("\\neq"), { condition = tex.in_mathzone }),
   s({ trig = "geq", wordTrig = false, snippetType = "autosnippet" }, t("\\geq"), { condition = tex.in_mathzone }),
   s({ trig = "leq", wordTrig = false, snippetType = "autosnippet" }, t("\\leq"), { condition = tex.in_mathzone }),
@@ -464,8 +466,13 @@ ls.add_snippets("tex", {
     { condition = tex.in_mathzone }
   ),
   s(
+    { trig = "mean", dscr = "Mean QM", snippetType = "autosnippet" },
+    fmta([[\mean{<>}]], { i(1, " ") }),
+    { condition = tex.in_mathzone }
+  ),
+  s(
     { trig = "norm", dscr = "Norm", snippetType = "autosnippet" },
-    fmta([[\left\lVert <>\right\rVert]], { i(1, " ") }),
+    fmta([[\norm{<>}]], { i(1, " ") }),
     { condition = tex.in_mathzone }
   ),
   s(
@@ -475,9 +482,13 @@ ls.add_snippets("tex", {
   ),
   s(
     { trig = "floor", wordTrig = false, dscr = "Floor function", snippetType = "autosnippet" },
-    fmta([[\left\lfloor<>\right\rfloor]], { i(1, " ") }),
+    fmta([[\floor{<>}]], { i(1, " ") }),
     { condition = tex.in_mathzone }
   ),
+  s({ trig = "bko", dscr = "Operator braket" }, fmta([[\bra{<>}\hat{<>}\ket{<>}]], { i(1, " "), i(2, " "), i(3, " ") }),
+    {
+      condition = tex.in_mathzone,
+    }),
   s({ trig = "bk", dscr = "Braket notation" }, fmta([[\braket{<>}{<>}]], { i(1, " "), i(2, " ") }), {
     condition = tex.in_mathzone,
   }),

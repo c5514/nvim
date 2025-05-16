@@ -1,0 +1,38 @@
+\documentclass[12pt]{report}
+\usepackage[a4paper,margin=.8in,footskip=.25in]{geometry}
+\setlength{\headheight}{15.pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\usepackage[Glenn]{fncychap}
+% Load my packages
+\usepackage{mynotes}
+% Equation and theorem numbering
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\makeatletter
+\let\old@section\section
+\def\section{\setcounter{equation}{0}\old@section}
+\makeatother
+\numberwithin{theorem}{section}
+\numberwithin{corollary}{section}
+\numberwithin{proposition}{section}
+\numberwithin{definition}{section}
+% Title page
+\title{\sc{Title's name}}
+\author{Author's name}
+\date{\today}
+
+\begin{document}
+\maketitle\newpage
+\pagenumbering{roman}
+\dominitoc
+\tableofcontents
+\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\part{Quantum Information Theory}
+\input{./part1/correlation.tex}
+\end{document}

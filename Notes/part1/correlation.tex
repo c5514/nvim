@@ -1,0 +1,248 @@
+\chapter{Correlation and Entanglement}
+\minitoc
+\section{Classical probability theory}
+\begin{Definition}{Probability space $(\Omega, \mathcal{E}, p)$}{}
+	It is a collection of:
+	\begin{itemize}
+		\item A set of all the possible outcomes $\Omega$, called the \emph{the sample space}.
+		\item A collection $\mathcal{E}\in 2^{\Omega}$ of possible outcomes that follows the axioms of a $\sigma$-algebra, i.e. it satisfies
+		      \begin{itemize}
+			      \item $\emptyset \in \mathcal{E}$.
+			      \item If $E \in \mathcal{E}$ then $\Omega \setminus E \in \mathcal{E}$.
+			      \item If $\{E_{i}\}_{i\in \mathbb{N}} \subset 2^\mathcal{E}$ then $\bigcup_{i \in \mathbb{N}}E_i \in \mathcal{E}$.
+		      \end{itemize}
+		      The elements of $\mathcal{E}$ are called \emph{events}.
+		\item A probability measure (or probability distribution) $p \colon \mathcal{E}\to \mathbb{R}$ that satisfies the Kolmogorov probability axioms:
+		      \begin{itemize}
+			      \item Every non-empty event $E \in \mathcal{E}$ satisfies $p[E]>0$.
+			      \item $p[\Omega] = 1$.
+			      \item $p\left[\bigcup_{i \in \mathbb{N}}E_i\right] = \sum_{i \in \mathbb{N}}p[E_i]$.
+		      \end{itemize}
+	\end{itemize}
+\end{Definition}
+\noindent As consequence of the definition of a $\sigma$-algebra, $\Omega \in \mathcal{E}$ and is called the \emph{certain event}. $\emptyset$ is called the \emph{impossible event}. This becomes more evident when we realize that $p[\emptyset] = 0$ and $p[\Omega] = 1$.
+\begin{Note}
+	Since we are dealing with discrete sample spaces we will not develop measure theory (There are no integrals!).
+\end{Note}
+\begin{Definition}{Conditional probability}{}
+	Let the events associated to $A$ and $B$ be given by $\mathcal{A}$ and $\mathcal{B}$, respectively. The conditional probability is defined as
+	\begin{equation}
+		p_{A\mid B}(\omega_i,\lambda_m) = \frac{p_{AB}(\omega_i,\lambda_m)}{p_B(\lambda_m)}
+	\end{equation}
+	where $\omega_i \in \mathcal{A}$ and $\lambda_m \in \mathcal{B}$.
+\end{Definition}
+A joint probability distribution is said to be \emph{correlated} if the outcome of $A$ does not depend on the outcome of $B$, i.e.
+\begin{equation}
+	p_{A\mid B}(\omega_i,\lambda_m) = p_{A\mid B}(\omega_i,\lambda_n).
+\end{equation}
+This implies that
+\begin{equation}
+	\begin{aligned}
+		\sum_{m}p_{AB}(\omega_i,\lambda_m) & = \sum_{m}\frac{p_{AB}(\omega_i,\lambda_n)}{p_B(\lambda_n)}p_B(\lambda_m) \\
+		p_A(\omega_i)                      & = \frac{p_{AB}(\omega_i,\lambda_n)}{p_B(\lambda_n)}\sum_m p_B(\lambda_m)  \\
+		p_A(\omega_i) p_B(\lambda_n)       & = p_{AB}(\omega_i,\lambda_n).
+	\end{aligned}
+\end{equation}
+Since $p_{A}(\omega_i)p_B(\lambda_m) = p_{AB}(\omega_i,\lambda_m)$ implies that
+\begin{equation}
+	\begin{aligned}
+		p_{A\mid B}(\omega_i,\lambda_m) & = \frac{p_{AB}(\omega_i,\lambda_m)}{p_B(\lambda_m)}    \\
+		                                & = \frac{p_{A}(\omega_i)p_B(\lambda_m)}{p_B(\lambda_m)} \\
+		                                & = p_A(\omega_i)
+	\end{aligned}
+\end{equation}
+we have an equivalence between this properties, i.e. if there is no correlation then the joint probability distribution can be expressed as a product of the probability distributions of $A$ and $B$. This also applies to the conditional probability $p_{B\mid A}$. This is result is expressed in the following proposition.
+\begin{proposition}
+	The following statements are equivalent
+	\begin{itemize}
+		\item There is no correlation in the joint probability distribution.
+		\item The joint probability satisfies
+		      \begin{equation*}
+			      p_{AB}(\omega_j,\lambda_m) = p_A(\omega_i)p_B(\lambda_m).
+		      \end{equation*}
+	\end{itemize}
+\end{proposition}
+\begin{Definition}{Random variable}{}
+	A random variable $X$ is real function on the set of the outcomes $\Omega = \left\{\omega_i \mid i = 0,1, \ldots , d_A-1\right\}$, i.e. $X \colon \Omega\to \mathbb{R}$.
+\end{Definition}
+\begin{definition}[Expected value]
+	The expected value or average value of a random variable $X$ is defined as
+	\begin{equation*}
+		E(X) = \sum_{i=0}^{d_A-1} p_X(\omega_i)X(\omega_i).
+	\end{equation*}
+	This definition can be extend to include the expected value of $n$ random variables $\{X_j\}$:
+	\begin{equation*}
+		E(X_1, \ldots, X_n) = \sum_{i=0}^{d_{A_1}-1}\ldots \sum_{j=0}^{d_{A_n}-1}p_{A_1, \ldots, A_n}(\omega_{i},, \ldots, \lambda_{j}) X_1(\omega_{i}) \ldots X_n(\lambda_{j}).
+	\end{equation*}
+	In particular
+	\begin{equation*}
+		E(X,Y) = \sum_{i=0}^{d_A-1}\sum_{j=0}^{d_B-1}p_{A,B}(\omega_i,\lambda_j)X(\omega_i)Y(\lambda_j).
+	\end{equation*}
+\end{definition}
+\noindent Based on this definition we define the \emph{correlation function}
+\begin{equation}
+	C(X,Y) = E(X,Y) - E(X)E(Y),
+\end{equation}
+and we can see that this function determines whether or not two probabilities distributions are correlated.
+\begin{proposition}
+	Let $X$ and $Y$ be two random variables.
+	\[
+		C(X,Y) = 0, \forall X,Y\quad \Longleftrightarrow \quad p_{A,B}(\omega_i,\lambda_j) = p_A(\omega_i)p_B(\lambda_j) \forall i,j.
+	\]
+\end{proposition}
+\section{Classical information theory}
+\begin{Definition}{Shannon's entropy}{}
+	The Shannon's entropy is defined as
+	\begin{equation*}
+		H(X) = - \sum_{x \in X}p(x)\log p(x),
+	\end{equation*}
+	and can be easily generalized to include $n$ random variables
+	\begin{equation*}
+		H(X_1, \ldots, X_n) = -\sum_{x_1\in X_1}\ldots\sum_{x_n \in X_n}p(x_1, \ldots, x_n)\log p(x_1, \ldots, x_n).
+	\end{equation*}
+\end{Definition}
+To define a conditional entropy we define
+\begin{equation}
+	H(X\mid Y=y) = -\sum_{x\in X}p(x\mid y) \log p(x\mid y)
+\end{equation}
+then
+\begin{equation}
+	\begin{aligned}[b]
+		H(X\mid Y) & = -\sum_{y\in Y}H(X\mid Y=y) = -\sum_{y\in Y}\sum_{x\in X}p(y)p(x\mid y)\log p(x\mid y) \\
+		           & = -\sum_{x \in X}\sum_{y \in Y}p(x,y)\log \frac{p(x,y)}{p(y)}.
+	\end{aligned}
+\end{equation}
+\begin{Definition}{Mutual information}{}
+	The mutual information between two random variables $X$ and $Y$ is defined as
+	\begin{equation*}
+		I(X\colon Y) = \sum_{y \in Y}\sum_{x\in X}p(x,y)\log \frac{p(x,y)}{p(x)p(y)}.
+	\end{equation*}
+\end{Definition}
+\begin{proposition}
+	The mutual information $I(X\colon Y)$ quantifies the correlation of the joint probability distribution $p(x,y)$.
+\end{proposition}
+\begin{proof}
+	This can be proved using
+	\begin{align*}
+		I(X\colon Y) & = \sum_{y \in Y}\sum_{x\in X}\left[p(x,y)\log \frac{p(x,y)}{p(y)} - p(x,y)\log p(x)\right] = -H(Y\mid X) + H(X)  \\
+		             & = \sum_{y \in Y}\sum_{x\in X}\left[p(x,y)\log \frac{p(x,y)}{p(x)} - p(x,y)\log p(y)\right] = - H(Y\mid X) + H(Y)
+	\end{align*}
+	and
+	\begin{align*}
+		H(X\mid Y) = -\sum_{x\in X}\sum_{y\in Y}p(x,y)\log p(x,y) + \sum_{x\in X}\sum_{y \in Y}p(x,y)\log p(y) = H(X,Y) - H(Y), \\
+		H(Y\mid X) = -\sum_{x\in X}\sum_{y\in Y}p(x,y)\log p(x,y) + \sum_{x\in X}\sum_{y \in Y}p(x,y)\log p(x) = H(X,Y) - H(X).
+	\end{align*}
+	This gives us
+	\begin{align*}
+		I(X\colon Y) & = H(X) + H(Y) - H(X,Y)              \\
+		             & = H(X) - H(X\mid Y)                 \\
+		             & = H(Y) - H(Y\mid X)                 \\
+		             & = H(X,Y) - H(X\mid Y) - H(Y\mid X).
+	\end{align*}
+\end{proof}
+\section{Quantum probability theory}
+We know that linear operators acting on the same space form a vector space, thus we can define a linear operator acting on the vector space spanned by those operators, i.e. we can define a linear operator
+\begin{equation}
+	\Phi \colon \mathcal{L}(X)\to \mathcal{L}(Y).
+\end{equation}
+Since $\mathcal{L}(\mathbb{C}) \simeq \mathbb{C}$, the trace function can be expressed as
+\begin{equation}
+	\Tr\colon \mathcal{L}(X)\to \mathcal{L}(\mathbb{C}).
+\end{equation}
+For another complex vector space $Y$ we can form using the tensor product the operator
+\begin{equation}
+	(\Tr \otimes \mathbbm{1}_{\mathcal{L}(Y)})\colon \mathcal{L}(X \otimes Y)\to \mathcal{L}(\mathbb{C})\mathcal{L}(Y)\simeq \mathcal{L}(Y).
+\end{equation}
+Now if we denote an element of $\mathcal{L}(X)$ by $\mathcal{X}$.
+\begin{equation}
+	(\Tr \otimes \mathbbm{1}_{\mathcal{L}(Y)})(\mathcal{X} \otimes \mathcal{Y}) = \Tr(\mathcal{X}) \mathcal{Y}
+\end{equation}
+and is called the partial trace $\Tr_X$. If we define
+\begin{equation}
+	(\mathbbm{1}_{\mathcal{L}(X)}\otimes \Tr)\colon \mathcal{L}(X \otimes Y)\to \mathcal{L}(X)\mathcal{L}(\mathbb{C})\simeq \mathcal{L}(X).
+\end{equation}
+then
+\begin{equation}
+	(\mathbbm{1}_{\mathcal{L}(X)}\otimes \Tr)(\mathcal{X} \otimes \mathcal{Y}) = \mathcal{X}\Tr(\mathcal{Y}),
+\end{equation}
+and is called the partial trace $\Tr_Y$.
+\begin{Definition}{Partial trace}{}
+	\begin{equation*}
+		\rho_B = \Tr_A \ketbra{\psi_{A,B}}{\psi_{A,B}} = \sum_i \braket{i_A}{\psi_{AB}}\braket{\psi_{AB}}{i_A}
+	\end{equation*}
+\end{Definition}
+\begin{theorem}
+	Dados los ensambles $\{p_i,\ket{\psi_i}\}$ y $\{q_j\ket{\varphi_j}\}$, estos generan el mismo operador densidad si y solo si \[\sqrt{p_i}\ket{\psi_i}=\sum_ju_{ij}\sqrt{q_j}\ket{\varphi_j},\]
+	donde $(u_{ij})$ es una matriz unitaria. Si uno de los conjuntos tiene menos elementos que el otro, agregamos estados con probabilidad $0$ hasta que tengan la misma cantidad.
+\end{theorem}
+\begin{proof}
+	\hfill\break $(\Leftarrow)$ Sean $\rho=\sum_ip_i\ketbra{\psi_i}$ y $\rho'=\sum_jq_j\ketbra{\varphi_j}$. Entonces
+	\begin{flalign*}
+		\rho & =\sum_ip_i\ketbra{\psi_i}=\sum_{ijk}u_{ij}u_{ik}^*\sqrt{q_j}\sqrt{q_k}\ketbra{\varphi_j}{\varphi_k} \\
+		     & =\sum_{jk}\left(\sum_iu_{ij}u_{ik}^*\right)\sqrt{q_j}\sqrt{q_k}\ketbra{\varphi_j}{\varphi_k}        \\
+		     & =\sum_{jk}\delta_{jk}\sqrt{q_j}\sqrt{q_k}\ketbra{\varphi_j}{\varphi_k}                              \\
+		     & =\sum_j q_j\ketbra{\varphi_j}=\rho'.
+	\end{flalign*}
+	$(\Rightarrow)$ Tenemos que $\rho=\sum_ip_i\ketbra{\psi_i}=\sum_jq_j\ketbra{\varphi_j}$. Ya que que $\rho$ es positivo, usando la descomposición espectral, se puede expresar como $\rho=\sum_k\lambda_k\ketbra{k}$. Si todos $\ket{k}\neq 0$, $p_i\ketbra{\psi_i}$ y $q_j\ketbra{\varphi_j}$ pueden expresarse como una combinación lineal de $\ket{k}$. Caso contrario, existe un estado $\ket{\psi}$ ortogonal al espacio generado por $\ket{k}$. Luego
+	\[0=\sum_k\lambda_k\braket{\psi}{k}\braket{k}{\psi}=\bra{\psi}{\rho}\ket{\psi}=\sum_ip_i\braket{\psi}{\psi_i}\braket{\psi_i}{\psi},\]
+	entonces $\braket{\psi}{\psi_i}=0$ para todos los estados $\ket{\psi}$ ortogonales al espacio generado por $\ket{k}$. Por lo que $\ket{\psi_i}$ puede ser expresado como una combinación lineal de $\ket{k}$. Así para ambos casos existen $c_{ik}$ tales que $\sqrt{p_i}\ket{\psi_i}=\sum_k c_{ik}\sqrt{\lambda_k}\ket{k}$, entonces\[\rho=\sum_k\lambda_k\ketbra{k}=\sum_{kl}\left(\sum_i c_{ik}c_{il}^*\right)\sqrt{\lambda_k\lambda_l}\ketbra{k}{l}\]
+	Ya que $\ketbra{k}{l}$ son linealmente independientes se debe cumplir que $\sum_ic_{ik}c_{il}^*=\delta_{kl}$. Esto garantiza que podamos contruir la matriz unitaria $v$ tal que $p_i\ket{\psi_i}=\sum_kv_{ik}\sqrt{\lambda_k}\ket{k}$, agregando columnas nulas. De manera análoga existe una matriz unitaria $w$ tal que $\sqrt{q_j}\ket{\varphi_j}=\sum_kw_{jk}\sqrt{\lambda_k}\ket{k}$. De esta forma $\sqrt{p_i}\ket{\psi_i}=\sum_ju_{ij}\sqrt{q_j}\ket{\varphi_j}$, donde $u=vw^\dagger$.
+\end{proof}
+\begin{Definition}{Operador densidad reducido}{}
+	Sean los sistemas físicos $A$ y $B$ cuyos estados son representados por $\rho^{AB}$. Se define el operador densidad reducido para el sistema $A$ como \[\rho^A\coloneqq\tr_B(\rho^{AB}),\]
+	donde $\tr_B$ es llamada la \textbf{la traza parcial sobre B} y esta dada por \[\tr_B(\ketbra{a_1}{a_2}\otimes\ketbra{b_1}{b_2})\coloneqq\ketbra{a_1}{a_2}\otimes(\ketbra{b_1}{b_2}),\]
+	donde $\ket{a_1},\ket{a_2}\in A$ y $\ket{b_1},\ket{b_2}\in B$.\\
+	Sean $\rho$ y $\sigma$ los operadores de densidad para $A$ y $B$, respectivamente. Entonces podemos expresar $\rho^A$ como\[\rho^A=\tr_B(\rho\otimes\sigma)=\rho\tr(\sigma)=\rho.\]
+\end{Definition}
+\begin{Note}
+	La traza parcial es usada para describir una parte de un sistema físico compuesto.
+\end{Note}
+\begin{proposition}
+	Sean $\ket{a}\in A$ y $\ket{b}\in B$ tales que el estado del sistema compuesto de $A$ y $B$ es $\ket{a}\ket{b}$. Entonces el operador densidad reducido de $A$ es un estado puro.
+\end{proposition}
+\begin{proof}
+	Hallamos el operador densidad del sistema compuesto \[\rho=(\ket{a}\ket{b})(\bra{a}\bra{b})=\ketbra{a}\otimes\ketbra{b}\]
+	Entonces el operador densidad reducidad de $A$ es \[\rho^A=\ketbra{a}\tr(\ketbra{b})=\ketbra{a}.\]
+	Se sigue que $\rho^A$ es un estado puro ya que $\tr((\rho^A)^2)=1$.
+\end{proof}
+\begin{Theorem}{Descomposición de Schmidt}{schmidt}
+	Sea el estado puro $\ket{\psi}$ del sistema compuesto $AB$. Entonces existen los conjuntos de estados ortonormales $\{\ket{i_A}\}$ y $\{\ket{i_B}\}$ para los sistemas $A$ y $B$, respectivamente, tales que \[\ket{\psi}=\sum_i\lambda_i\ket{i_A}\ket{i_B},\]
+	donde $\lambda_i$ son reales no negativos que cumplen $\sum_i\lambda_i^2=1$ y son llamados \textbf{coeficientes de Schmidt}.
+\end{Theorem}
+\begin{Proof}{Theorem \ref{thm:schmidt}}{}
+	Sean las bases $\{\ket{\psi_1},\cdots,\ket{\psi_n}\}$ y $\{\ket{\varphi_1},\cdots,\ket{\varphi_m}\}$ para los sistemas $A$ y $B$, respectivamente. Asumimos que $n\leq m$. Entonces $\ket{\psi}$ se puede expresar como
+	\[\ket{\psi}=\sum_{\substack{1\leq i\leq n\\1\leq j\leq m}}c_{ij}\ket{\psi_i}\ket{\varphi_j}\]
+	Por lo que podemos definir la matriz $(c_{ij})\in\mathcal{M}_{n\times m}$. Usando la descomposición a valores singulares\[(c_{ij})=U\begin{pmatrix}
+			D \\
+			0
+		\end{pmatrix}V,\]donde $U\in U(n)$, $D$ es una matriz $m\times m$ diagonal y $V\in U(m)$. Si $U=(U_1\quad U_2)$, donde $U_1\in \mathcal{M}_{n\times m}$. Entonces\[(c_{ij})=U_1 D V\]
+	Así \[\ket{\psi}=\sum_{ijk}u_{ji}d_{ii}v_{ik}\ket{\psi_j}\ket{\varphi_k}.\]
+	Definimos $\ket{i_A}=\sum_ju_{ji}\ket{\psi_j}$, $\ket{i_B}=\sum_{k}v_{ik}\ket{\varphi_k}$ y $\lambda_i=d_{ii}$, entonces
+	\[\ket{\psi}=\sum_i\lambda_i\ket{i_A}\ket{i_B}\]
+	Notamos que $\ket{i_A}$ y $\ket{i_B}$ forman conjuntos ortonormales, así $\sum_i\lambda_i^2=1$.
+\end{Proof}
+\begin{proposition}[Purificación de un estado]
+	Sea el estado $\rho^A$. Entonces es posible añadir el sistema $R$ y definir el estado puro $\ket{AR}$ para $AR$ tal que $\rho^A=\tr(\ketbra{AR})$.
+\end{proposition}
+\begin{proof}
+	Sea la descomposición ortonormal de $\rho^A=\sum_ip_i\ketbra{i^A}$. Luego definimos el sistema $R$ con el mismo espacio de estados de $A$ con base ortonormal $\{\ket{i^R}\}$. Así construimos el estado puro para $AR$
+	\[\ket{AR}=\sum_i\sqrt{p_i}\ket{i^A}\ket{i^R}\]
+\end{proof}
+Since any observable is associated to a random variable, we can generalize the correlation function for the quantum case:
+\begin{equation}
+	C(O_A, O_B) = \left\langle O_A \otimes O_B\right\rangle - \left\langle O_A\otimes I_B\right\rangle \left\langle I_A \otimes O_B\right\rangle
+\end{equation}
+\begin{proposition}
+	A state $\ket{\psi_{AB}}$ has no correlations if and only if $\ket{\psi_{AB}} = \ket{\psi_A}\otimes \ket{\psi_B}$ or $\forall O_A,O_B$, $C(O_A,O_B) = 0$.
+\end{proposition}
+
+\section{Quantum information theory}
+\begin{Definition}{von Neumann entropy}{}
+	The von Neumann entropy is defined as
+	\begin{equation*}
+		S(\rho) = -\Tr(\rho\log \rho)
+	\end{equation*}
+\end{Definition}
+\begin{Summary}{}
+	We obtained
+\end{Summary}
